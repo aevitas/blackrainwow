@@ -1,0 +1,13 @@
+BlackRain -- Changelog
+By Seifer at MMOwned.com
+
+-------------------------
+
+04172010 - Revision 3
+
+- Introduced switch to ObjectManager to determine object type.
+- Fixed (possible) stability risk in WowUnit.IsCritter (not tested!)
+- Minor tweak to Descriptor reading, because Apoc's anal.
+- ObjectManager.Pulse(); now handles exceptions and logs them.
+
+04162010 - Initial release
