@@ -3,7 +3,7 @@ An ObjectManager manages objects in the game World of Warcraft.
 
 = Introduction =
 
-The ObjectManager is relative to the ThreadLocalStorage (TLS).
+The ObjectManager is relative to the ThreadLocalStorage (TLS). It can be obtained using a static offset, or a pattern method.
 
 
 = Details =
