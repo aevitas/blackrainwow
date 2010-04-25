@@ -1,0 +1,17 @@
+An ObjectManager manages objects in the game World of Warcraft.
+
+= Introduction =
+
+The ObjectManager is relative to the ThreadLocalStorage (TLS).
+
+
+= Details =
+
+{{{
+CConnection = Memory.ReadUInt(Memory.ReadUInt(ThreadLocalStorage + 0x16));
+                    CConnectionOffset = Memory.ReadUInt(ThreadLocalStorage + 0x1C);
+                    CurrentManager = Memory.ReadUInt(CConnection + CConnectionOffset);
+
+private static string TLSPattern { get { return "EB 02 33 C0 8B D 00 00 00 00 64 8B 15 00 00 00 00 8B 34 8A 8B D 00 00 00 00 89 81 00 00 00 00"; } }
+        private static string TLSMask { get { return "xxxxxx????xxx????xxxxx????xx????"; } }
+}}}
