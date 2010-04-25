@@ -6,9 +6,9 @@ This thread will help you getting started with BlackRain, setting up a sample pr
 First off, download the latest stable release from the downloads page. If you prefer to include the source code in your project, download it from the SVN using an SVN client such as Tortoise SVN. However, in this tutorial we'll assume you have downloaded the binaries.
 
 This tutorial also assumes you have the following:
-- Visual Studio 2010 (Any edition)
-- Microsoft .NET Framework 4.0
-- At least basic knowledge of C#/C-style coding
+* Visual Studio 2010 (Any edition)
+* Microsoft .NET Framework 4.0
+* At least basic knowledge of C#/C-style coding
 
 
 = Details =
