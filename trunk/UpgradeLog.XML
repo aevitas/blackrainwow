@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="BlackRain">
+</Property><Property Name="Solution File" Value="D:\Public Releases\BlackRain\BlackRain.sln">
+</Property><Property Name="User Options File" Value="D:\Public Releases\BlackRain\BlackRain.suo">
+</Property><Property Name="Date" Value="22 April 2010">
+</Property><Property Name="Time" Value="16:21">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="BlackRain.sln" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain.sln">
+</Event><Event ErrorLevel="0" Project="" Source="BlackRain.suo" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain.suo">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\BlackRain.csproj" Description="Project file successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\BlackRain.csproj">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Logging.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Logging.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\ObjectManager.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\ObjectManager.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowContainer.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowContainer.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowCorpseObject.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowCorpseObject.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowDynamicObject.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowDynamicObject.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowGameObject.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowGameObject.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowItem.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowItem.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowObject.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowObject.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowPlayer.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowPlayer.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Common\Objects\WowUnit.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Common\Objects\WowUnit.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Constants\Offsets.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Constants\Offsets.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackRain\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\BlackRain.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="BlackRain" Source="BlackRain\BlackRain.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\BlackWeather.csproj" Description="Project file successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\BlackWeather.csproj">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\BlackWeather.csproj.user" Description="Project user file successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\BlackWeather.csproj.user">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Main.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Main.cs">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Main.Designer.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Main.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Program.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Program.cs">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Properties\AssemblyInfo.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Properties\Resources.Designer.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Properties\Settings.Designer.cs" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\app.manifest" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\app.manifest">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Properties\Settings.settings" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Main.resx" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Main.resx">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\Properties\Resources.resx" Description="File successfully backed up as D:\Public Releases\BlackRain\Backup\BlackWeather\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\BlackWeather.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="BlackWeather" Source="BlackWeather\BlackWeather.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="BlackRain.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="BlackRain.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="BlackRain" Source="BlackRain\BlackRain.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="BlackWeather" Source="BlackWeather\BlackWeather.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

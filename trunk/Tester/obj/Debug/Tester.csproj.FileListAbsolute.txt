@@ -1,0 +1,11 @@
+D:\Public Releases\BlackRain\Tester\bin\Debug\Tester.dll
+D:\Public Releases\BlackRain\Tester\bin\Debug\Tester.pdb
+D:\Public Releases\BlackRain\Tester\bin\Debug\BlackMagic.dll
+D:\Public Releases\BlackRain\Tester\bin\Debug\BlackRainObjects.dll
+D:\Public Releases\BlackRain\Tester\bin\Debug\fasmdll_managed.dll
+D:\Public Releases\BlackRain\Tester\bin\Debug\BlackRainObjects.pdb
+D:\Public Releases\BlackRain\Tester\bin\Debug\BlackRainObjects_Accessor.dll
+D:\Public Releases\BlackRain\Tester\bin\Debug\BlackRainObjects_Accessor.pdb
+D:\Public Releases\BlackRain\Tester\obj\Debug\ResolveAssemblyReference.cache
+D:\Public Releases\BlackRain\Tester\obj\Debug\Tester.dll
+D:\Public Releases\BlackRain\Tester\obj\Debug\Tester.pdb

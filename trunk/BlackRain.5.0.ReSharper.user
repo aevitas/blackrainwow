@@ -1,0 +1,177 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="where" priority="1" />
+      <Item value="private" priority="0" />
+      <Item value="List" priority="1" />
+      <Item value="new" priority="17" />
+      <Item value="List&lt;T&gt;" priority="0" />
+      <Item value="public" priority="21" />
+      <Item value="SearchParams`0" priority="3" />
+      <Item value="void" priority="1" />
+      <Item value="IEnumerable" priority="3" />
+      <Item value="ObjectManager`0" priority="19" />
+      <Item value="searchParams" priority="0" />
+      <Item value="var" priority="2" />
+      <Item value="return" priority="11" />
+      <Item value="ret" priority="0" />
+      <Item value="DoSearch`1" priority="1" />
+      <Item value="WowObject`0" priority="5" />
+      <Item value="_objectList" priority="0" />
+      <Item value="T`0" priority="0" />
+      <Item value="SearchObject" priority="4" />
+      <Item value="Parameters" priority="3" />
+      <Item value="SearchParams" priority="4" />
+      <Item value="DefaultParameterValue" priority="2" />
+      <Item value="Refresh`0" priority="1" />
+      <Item value="if" priority="1" />
+      <Item value="params" priority="1" />
+      <Item value="null" priority="1" />
+      <Item value="parameters" priority="0" />
+      <Item value="true" priority="2" />
+      <Item value="false" priority="2" />
+      <Item value="int" priority="0" />
+      <Item value="y" priority="0" />
+      <Item value="bool" priority="1" />
+      <Item value="GUID" priority="0" />
+      <Item value="foreach" priority="4" />
+      <Item value="WowUnit`0" priority="6" />
+      <Item value="object" priority="2" />
+      <Item value="obj" priority="20" />
+      <Item value="in" priority="2" />
+      <Item value="lst_Objects" priority="6" />
+      <Item value="string" priority="10" />
+      <Item value="WowPlayer`0" priority="9" />
+      <Item value="Logging`0" priority="1" />
+      <Item value="field" priority="1" />
+      <Item value="WowUnit" priority="1" />
+      <Item value="WowItem`0" priority="1" />
+      <Item value="WowPlayer" priority="3" />
+      <Item value="WowGameObject`0" priority="1" />
+      <Item value="WowGameObject" priority="1" />
+      <Item value="WowDynamicObject`0" priority="0" />
+      <Item value="player" priority="0" />
+      <Item value="BlackRainException`0" priority="4" />
+      <Item value="base" priority="3" />
+      <Item value="class" priority="1" />
+      <Item value="Base64FormattingOptions`0" priority="0" />
+      <Item value="exception" priority="0" />
+      <Item value="BlackRainObjectException`0" priority="0" />
+      <Item value="BlackRainMemoryException`0" priority="0" />
+      <Item value="using" priority="0" />
+      <Item value="System" priority="0" />
+      <Item value="Linq" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BlackRain.Common.Objects.ObjectManager">
+      <Item value="Objects" priority="0" />
+      <Item value="LocalGUID" priority="0" />
+      <Item value="Me" priority="10" />
+      <Item value="Pulse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BlackRain.Constants.Offsets">
+      <Item value="WowObjectFields`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BlackRain.Common.Objects.SearchObject`1">
+      <Item value="DoSearch`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Count" priority="0" />
+      <Item value="OfType`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox">
+      <Item value="Items" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Forms.ListBox+ObjectCollection">
+      <Item value="Add`0" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Format`0" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BlackRain.Common.Objects.WowObject">
+      <Item value="GUID" priority="0" />
+      <Item value="Entry" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:BlackRain.Common.Objects.WowPlayer">
+      <Item value="BaseAddress" priority="2" />
+      <Item value="ToString`0" priority="0" />
+      <Item value="X" priority="1" />
+      <Item value="Y" priority="0" />
+      <Item value="Z" priority="0" />
+      <Item value="Type" priority="0" />
+      <Item value="GUID" priority="1" />
+      <Item value="Health" priority="0" />
+      <Item value="ToPlayer`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@BlackRain.Common.Logging">
+      <Item value="Write`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Indexer" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:SearchObject.cs" caret="4281" fromTop="23" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowItem.cs" caret="677" fromTop="23" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Constants/f:Offsets.cs" caret="425" fromTop="17" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowPlayer.cs" caret="0" fromTop="0" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowUnit.cs" caret="5954" fromTop="149" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowGameObject.cs" caret="979" fromTop="34" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/f:Logging.cs" caret="4936" fromTop="27" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/f:Exception.cs" caret="957" fromTop="25" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="1251" fromTop="0" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowObject.cs" caret="5335" fromTop="103" />
+      <File id="B561A8B0-2FD9-4D55-9FD7-01EF9591E071/f:Main.cs" caret="2208" fromTop="28" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowGameObject.cs" caret="819" fromTop="18" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:SearchObject.cs" caret="4531" fromTop="22" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:SearchObject.cs" caret="3372" fromTop="9" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowObject.cs" caret="2231" fromTop="23" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:SearchObject.cs" caret="4237" fromTop="17" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:SearchObject.cs" caret="516" fromTop="10" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:SearchObject.cs" caret="3963" fromTop="18" />
+      <File id="B561A8B0-2FD9-4D55-9FD7-01EF9591E071/f:Main.cs" caret="2421" fromTop="17" />
+      <File id="B561A8B0-2FD9-4D55-9FD7-01EF9591E071/f:Main.cs" caret="1594" fromTop="24" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="5470" fromTop="48" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="2406" fromTop="28" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="2672" fromTop="11" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="3200" fromTop="15" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="2474" fromTop="21" />
+      <File id="B561A8B0-2FD9-4D55-9FD7-01EF9591E071/f:Main.cs" caret="2215" fromTop="40" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowObject.cs" caret="2633" fromTop="26" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowObject.cs" caret="3735" fromTop="38" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowObject.cs" caret="5873" fromTop="37" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowObject.cs" caret="4692" fromTop="25" />
+      <File id="B561A8B0-2FD9-4D55-9FD7-01EF9591E071/f:Main.cs" caret="1826" fromTop="25" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:WowObject.cs" caret="5502" fromTop="46" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/f:Logging.cs" caret="5504" fromTop="48" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/f:Exception.cs" caret="588" fromTop="11" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/f:Exception.cs" caret="275" fromTop="10" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/f:Exception.cs" caret="945" fromTop="21" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/f:Exception.cs" caret="159" fromTop="6" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="476" fromTop="15" />
+      <File id="0965772D-DB31-4B11-BD1E-87311384EAC1/d:Common/d:Objects/f:ObjectManager.cs" caret="197" fromTop="8" />
+      <File id="B561A8B0-2FD9-4D55-9FD7-01EF9591E071/f:Main.cs" caret="109" fromTop="2" />
+      <File id="B561A8B0-2FD9-4D55-9FD7-01EF9591E071/f:Main.cs" caret="2392" fromTop="24" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

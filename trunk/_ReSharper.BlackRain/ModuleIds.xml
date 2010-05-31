@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="0965772D-DB31-4B11-BD1E-87311384EAC1" ModuleId="BlackRain" />
+  <Module PersistentId="B561A8B0-2FD9-4D55-9FD7-01EF9591E071" ModuleId="BlackWeather" />
+  <Module PersistentId="5E47AB86-8AB8-46DC-905D-13841955F926" ModuleId="Tester" />
+</Modules>
