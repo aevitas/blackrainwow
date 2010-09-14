@@ -3,7 +3,7 @@ BlackMagic
 
 = Introduction =
 
-BlackMagic is a managemed memory manipulation library written by Shynd.
+BlackMagic is a managed memory manipulation library written by Shynd.
 
 
 = Details =
