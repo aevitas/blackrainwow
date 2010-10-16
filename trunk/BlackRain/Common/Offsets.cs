@@ -15,6 +15,26 @@ namespace BlackRain.Common
 #pragma warning disable 1591
 
         /// <summary>
+        /// Memory locations specific to the WowPlayer type.
+        /// </summary>
+        public enum WoWPlayer: uint
+        {
+            NameStore = 0x00881988 + 0x8,
+            NameMask = 0x24,
+            NameBase = 0x1C, 
+            NameString = 0x20 
+        }
+
+        /// <summary>
+        /// Memory locations specific to the WowPlayerMe type.
+        /// </summary>
+        public enum WoWPlayerMe: uint
+        {
+            Zone = 0x981688,
+            SubZone = 0x981684
+        }
+
+        /// <summary>
         /// Memory locations specific to the WowObject type.
         /// </summary>
         public enum WowObject : uint

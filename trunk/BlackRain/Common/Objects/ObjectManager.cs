@@ -11,6 +11,16 @@ namespace BlackRain.Common.Objects
     /// </summary>
     public static class ObjectManager
     {
+        ///<summary>
+        /// The base address for the WoW process.
+        ///</summary>
+        public static uint GlobalBaseAddress;
+
+        /// <summary>
+        /// To prevent thread racing scenarios.
+        /// </summary>
+        private static object objPulse = new object();
+
         #region <Enums>
 
         // ReSharper disable UnusedMember.Local
@@ -64,7 +74,7 @@ namespace BlackRain.Common.Objects
         /// <summary>
         /// The local player.
         /// </summary>
-        public static WowPlayer Me { get; set; }
+        public static WowPlayerMe Me { get; set; }
 
         internal static uint CurrentManager { get; set; }
 
@@ -88,21 +98,8 @@ namespace BlackRain.Common.Objects
 
             try
             {
-                /*var TLS =
-                    Memory.FindPattern(
-                        "EB 02 33 C0 8B D 00 00 00 00 64 8B 15 00 00 00 00 8B 34 8A 8B D 00 00 00 00 89 81 00 00 00 00",
-                        "xxxxxx????xxx????xxxxx????xx????");
-
-                if (TLS != uint.MaxValue)
-                {
-                    var ClientConnection = Memory.ReadUInt(Memory.ReadUInt(TLS + 0x16));
-                    var ClientConnectionOffset = Memory.ReadUInt(TLS + 0x1C);
-                    CurrentManager = Memory.ReadUInt(ClientConnection + ClientConnectionOffset);
-
-                    PlayerGUID = Memory.ReadUInt64(CurrentManager + 0xC0); // Store the player's GUID.
-                }*/
-
                 CurrentManager = Memory.ReadUInt(Memory.ReadUInt((uint)nBaseAddress + (uint)0x008A5C20) + (uint)0x4618);
+                GlobalBaseAddress = (uint)nBaseAddress;
                 PlayerGUID = Memory.ReadUInt64(CurrentManager + 0xC8);
             }
             catch (Exception ex)
@@ -116,56 +113,58 @@ namespace BlackRain.Common.Objects
         /// </summary>
         public static void Pulse()
         {
-            if (!Initialized) // Can't pulse if we're not onto something!
-                return;
-
-            if (Objects.Count > 0)
-                Objects.Clear();
-
-            try
+            lock (objPulse)
             {
-                var currentObject = new WowObject(Memory.ReadUInt(CurrentManager + 0xB4));
+                if (!Initialized) // Can't pulse if we're not onto something!
+                    return;
 
-                while (currentObject.BaseAddress != uint.MinValue && currentObject.BaseAddress % 2 == uint.MinValue)
+                if (Objects.Count > 0)
+                    Objects.Clear();
+
+                try
                 {
-                    switch (currentObject.Type)
+                    var currentObject = new WowObject(Memory.ReadUInt(CurrentManager + 0xB4));
+
+                    while (currentObject.BaseAddress != uint.MinValue && currentObject.BaseAddress%2 == uint.MinValue)
                     {
-                        case (int)ObjectType.Unit:
-                            Objects.Add(new WowUnit(currentObject.BaseAddress));
-                            break;
-                        case (int)ObjectType.Item:
-                            Objects.Add(new WowItem(currentObject.BaseAddress));
-                            break;
-                        case (int)ObjectType.Container:
-                            Objects.Add(new WowContainer(currentObject.BaseAddress));
-                            break;
-                        case (int)ObjectType.Corpse:
-                            Objects.Add(new WowCorpse(currentObject.BaseAddress));
-                            break;
-                        case (int)ObjectType.GameObject:
-                            Objects.Add(new WowGameObject(currentObject.BaseAddress));
-                            break;
-                        case (int)ObjectType.DynamicObject:
-                            Objects.Add(new WowDynamicObject(currentObject.BaseAddress));
-                            break;
-                        case (int)ObjectType.Player:
-                            Objects.Add(new WowPlayer(currentObject.BaseAddress));
-                            break;
+                        switch (currentObject.Type)
+                        {
+                            case (int) ObjectType.Unit:
+                                Objects.Add(new WowUnit(currentObject.BaseAddress));
+                                break;
+                            case (int) ObjectType.Item:
+                                Objects.Add(new WowItem(currentObject.BaseAddress));
+                                break;
+                            case (int) ObjectType.Container:
+                                Objects.Add(new WowContainer(currentObject.BaseAddress));
+                                break;
+                            case (int) ObjectType.Corpse:
+                                Objects.Add(new WowCorpse(currentObject.BaseAddress));
+                                break;
+                            case (int) ObjectType.GameObject:
+                                Objects.Add(new WowGameObject(currentObject.BaseAddress));
+                                break;
+                            case (int) ObjectType.DynamicObject:
+                                Objects.Add(new WowDynamicObject(currentObject.BaseAddress));
+                                break;
+                            case (int) ObjectType.Player:
+                                Objects.Add(new WowPlayer(currentObject.BaseAddress));
+                                break;
+                        }
+
+                        if (currentObject.GUID == PlayerGUID)
+                            Me = new WowPlayerMe(currentObject.BaseAddress);
+
+                        currentObject.BaseAddress = Memory.ReadUInt(currentObject.BaseAddress + 0x3C);
                     }
 
-                    if (currentObject.GUID == PlayerGUID)
-                        Me = new WowPlayer(currentObject.BaseAddress);
 
-                    currentObject.BaseAddress = Memory.ReadUInt(currentObject.BaseAddress + 0x3C);
                 }
-
-
+                catch (Exception ex)
+                {
+                    Logging.WriteException(Color.Red, ex);
+                }
             }
-            catch (Exception ex)
-            {
-                Logging.WriteException(Color.Red, ex);
-            }
-
         }
 
         /// <summary>
@@ -254,7 +253,8 @@ namespace BlackRain.Common.Objects
 
                 if (t == upperType || allowInheritance && t.IsSubclassOf(upperType))
                 {
-                    if (!includeMeIfFound && objects[i] == Me)
+                    // ddebug: bug fix, don't include 'Me'
+                    if (!includeMeIfFound && objects[i].GUID == Me.GUID)
                         continue;
 
                     var obj = objects[i] as T;
