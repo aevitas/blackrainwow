@@ -59,6 +59,7 @@
     <Compile Include="Common\Objects\WowItem.cs" />
     <Compile Include="Common\Objects\WowObject.cs" />
     <Compile Include="Common\Objects\WowPlayer.cs" />
+    <Compile Include="Common\Objects\WowPlayerMe.cs" />
     <Compile Include="Common\Objects\WowUnit.cs" />
     <Compile Include="Common\Offsets.cs" />
     <Compile Include="Common\Point.cs" />

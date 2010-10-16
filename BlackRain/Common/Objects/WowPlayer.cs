@@ -64,10 +64,38 @@ namespace BlackRain.Common.Objects
             get { return HasUnitFlag(Offsets.UnitFlags.Combat); }
         }
 
+        /// <summary>
+        /// The name of the player.
+        /// </summary>
         public override string Name
         {
-            get {
-                return "";
+            get
+            {
+                uint nMask = ObjectManager.Memory.ReadUInt(ObjectManager.GlobalBaseAddress + (uint)Offsets.WoWPlayer.NameStore + (uint)Offsets.WoWPlayer.NameMask);
+                uint nBase = ObjectManager.Memory.ReadUInt(ObjectManager.GlobalBaseAddress + (uint)Offsets.WoWPlayer.NameStore + (uint)Offsets.WoWPlayer.NameBase);
+
+                ulong nShortGUID = this.GUID & 0xFFFFFFFF; // only need part of the GUID
+                ulong nOffset = 0xC * (nMask & nShortGUID);
+
+                uint nCurrentObject = ObjectManager.Memory.ReadUInt((uint)(nBase + (12 * (nMask & nShortGUID)) + 0x8));
+                nOffset = ObjectManager.Memory.ReadUInt((uint)(nBase + nOffset));
+
+                if ((nCurrentObject & 0x1) == 0x1) 
+                    return "Unknown Player";
+
+                uint nTestAgainstGUID = ObjectManager.Memory.ReadUInt((uint)(nCurrentObject));
+
+                while (nTestAgainstGUID != nShortGUID)
+                {
+                    nCurrentObject = ObjectManager.Memory.ReadUInt((uint)(nCurrentObject + nOffset + 0x4));
+
+                    if ((nCurrentObject & 0x1) == 0x1) 
+                        return "Unknown Player";
+
+                    nTestAgainstGUID = ObjectManager.Memory.ReadUInt((uint)(nCurrentObject));
+                }
+
+                return ObjectManager.Memory.ReadASCIIString((uint)(nCurrentObject + (uint)Offsets.WoWPlayer.NameString), 40);
             }
         }
 
