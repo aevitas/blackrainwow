@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Magic;
 
 namespace BlackRain.Common.Objects
@@ -11,15 +13,36 @@ namespace BlackRain.Common.Objects
     /// </summary>
     public static class ObjectManager
     {
-        ///<summary>
-        /// The base address for the WoW process.
-        ///</summary>
-        public static uint GlobalBaseAddress;
-
         /// <summary>
         /// To prevent thread racing scenarios.
         /// </summary>
-        private static object objPulse = new object();
+        private static readonly object objPulse = new object();
+
+        private static Process WowProcess { get; set; }
+
+        /// <summary>
+        /// Gets the wow base address.
+        /// </summary>
+        /// <value>The wow base address.</value>
+        /// 19/10/2010 17:30
+        private static uint WowBaseAddress
+        {
+            get 
+            {
+                return WowProcess.MainModule == null ? 0 : (uint)WowProcess.MainModule.BaseAddress;
+            }
+        }
+
+        /// <summary>
+        /// Makes the address absolute.
+        /// </summary>
+        /// <param name="relativeAddress">The relative address.</param>
+        /// <returns></returns>
+        /// 19/10/2010 17:33
+        public static uint MakeAbsolute(uint relativeAddress)
+        {
+            return relativeAddress + WowBaseAddress;
+        }
 
         #region <Enums>
 
@@ -44,7 +67,7 @@ namespace BlackRain.Common.Objects
         /// <summary>
         /// The instance of BlackMagic used for World of Warcraft memory editing.
         /// </summary>
-        public static BlackMagic Memory { get; set; }
+        internal static BlackMagic Memory { get; set; }
 
         /// <summary>
         /// Is the ObjectManager initialized?
@@ -86,26 +109,36 @@ namespace BlackRain.Common.Objects
         /// <summary>
         /// Initialized the ObjectManager, and attaches it to the selected process ID.
         /// </summary>
-        /// <param name="pID"></param>
-        /// <param name="nBaseAddress"></param>
-        public static void Initialize(int pID, IntPtr nBaseAddress)
+        /// <param name="wowProc">The wow proc.</param>
+        public static void Initialize(Process wowProc)
         {
 
             if (Initialized) // Nothing to do if we're already initialized.
                 return;
 
-            Memory = new BlackMagic(pID);
+            WowProcess = wowProc;
+            Memory = new BlackMagic(wowProc.Id);
 
             try
             {
-                CurrentManager = Memory.ReadUInt(Memory.ReadUInt((uint)nBaseAddress + (uint)0x008A5C20) + (uint)0x4618);
-                GlobalBaseAddress = (uint)nBaseAddress;
-                PlayerGUID = Memory.ReadUInt64(CurrentManager + 0xC8);
+                CurrentManager = Memory.ReadUInt(Memory.ReadUInt(WowBaseAddress + (uint)Offsets.ObjectManager.Tls) + (uint)Offsets.ObjectManager.CurMgr);
+                PlayerGUID = Memory.ReadUInt64(CurrentManager + (uint)Offsets.ObjectManager.LocalGuid);
             }
             catch (Exception ex)
             {
                 Logging.WriteException(Color.Red, ex);
             }
+        }
+
+        /// <summary>
+        /// Initialized the ObjectManager, and attaches it to the selected process ID.
+        /// </summary>
+        /// <param name="pid">The process id.</param>
+        /// 19/10/2010 17:40
+        public static void Initialize(int pid)
+        {
+            var p = Process.GetProcessById(pid);
+            Initialize(p);
         }
 
         /// <summary>
@@ -123,7 +156,7 @@ namespace BlackRain.Common.Objects
 
                 try
                 {
-                    var currentObject = new WowObject(Memory.ReadUInt(CurrentManager + 0xB4));
+                    var currentObject = new WowObject(Memory.ReadUInt(CurrentManager + (uint)Offsets.ObjectManager.FirstObject));
 
                     while (currentObject.BaseAddress != uint.MinValue && currentObject.BaseAddress%2 == uint.MinValue)
                     {
@@ -152,10 +185,10 @@ namespace BlackRain.Common.Objects
                                 break;
                         }
 
-                        if (currentObject.GUID == PlayerGUID)
+                        if (currentObject.GUID == PlayerGUID && Me == null)
                             Me = new WowPlayerMe(currentObject.BaseAddress);
 
-                        currentObject.BaseAddress = Memory.ReadUInt(currentObject.BaseAddress + 0x3C);
+                        currentObject.BaseAddress = Memory.ReadUInt(currentObject.BaseAddress + (uint)Offsets.ObjectManager.NextObject);
                     }
 
 
@@ -168,6 +201,59 @@ namespace BlackRain.Common.Objects
         }
 
         /// <summary>
+        /// Reads the relative memory at the specified address.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="address">The address.</param>
+        /// <returns></returns>
+        /// 16/10/2010 16:38
+        public static T ReadRelative<T>(uint address)
+        {
+            object ret;
+            var t = typeof(T);
+
+            switch (Type.GetTypeCode(typeof(T)))
+            {
+                case TypeCode.Int16:
+                    ret = Memory.ReadUShort(MakeAbsolute(address));
+                    break;
+                case TypeCode.Int32:
+                    ret = Memory.ReadInt(MakeAbsolute(address));
+                    break;
+                case TypeCode.Int64:
+                    ret = Memory.ReadInt64(MakeAbsolute(address));
+                    break;
+                case TypeCode.String:
+                    ret = Memory.ReadASCIIString(MakeAbsolute(address), 40);
+                    break;
+                case TypeCode.UInt16:
+                    ret = Memory.ReadUShort(MakeAbsolute(address));
+                    break;
+                case TypeCode.UInt32:
+                    ret = Memory.ReadUInt(MakeAbsolute(address));
+                    break;
+                case TypeCode.UInt64:
+                    ret = Memory.ReadUInt64(MakeAbsolute(address));
+                    break;
+                case TypeCode.Single:
+                    ret = Memory.ReadShort(MakeAbsolute(address));
+                    break;
+                case TypeCode.Byte:
+                    ret = Memory.ReadByte(MakeAbsolute(address));
+                    break;
+                case TypeCode.Object:
+                    ret = Memory.ReadObject(MakeAbsolute(address), t);
+                    break;
+                case TypeCode.Double:
+                    ret = Memory.ReadDouble(MakeAbsolute(address));
+                    break;
+                default: throw new NotSupportedException(string.Format("Type {0} is not currently supported.", typeof(T).FullName));
+            }
+
+            return (T)ret;
+        }
+
+        /// <summary>
         /// Reads the memory at the specified address.
         /// </summary>
         /// <typeparam name="T">The type of data to be read.</typeparam>
@@ -176,7 +262,7 @@ namespace BlackRain.Common.Objects
         public static T Read<T>(uint address)
         {
             object ret;
-            Type t = typeof (T);
+            var t = typeof (T);
 
             switch (Type.GetTypeCode(typeof(T)))
             {
@@ -217,6 +303,86 @@ namespace BlackRain.Common.Objects
             }
 
             return (T) ret;
+        }
+
+        /// <summary>
+        /// Writes the value of type T to the specified address.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="address">The address.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        /// 19/10/2010 17:44
+        public static bool Write<T>(uint address, T value)
+        {
+            if (typeof(T) == typeof(string))
+                throw new NotSupportedException("BlackRain.Write<T> currently does not support the writing of type " + typeof(T).FullName);
+
+            try
+            {
+                object val = value;
+
+                byte[] bytes;
+
+                // Handle types that don't have a real typecode
+                // and/or can be done without the ReadByte bullshit
+                if (typeof(T) == typeof(IntPtr))
+                {
+                    // Since we're already here...... we might as well do some stuffs.
+                    Marshal.WriteIntPtr(new IntPtr(address), (IntPtr)val);
+                    return true;
+                }
+
+                // Make sure we're handling passing in stuff as a byte array.
+                if (typeof(T) == typeof(byte[]))
+                {
+                    bytes = (byte[])val;
+                    return Memory.WriteBytes(address, bytes);
+                }
+                switch (Type.GetTypeCode(typeof(T)))
+                {
+                    case TypeCode.Boolean:
+                        bytes = BitConverter.GetBytes((bool)val);
+                        break;
+                    case TypeCode.Char:
+                        bytes = BitConverter.GetBytes((char)val);
+                        break;
+                    case TypeCode.Byte:
+                        bytes = new[] { (byte)val };
+                        break;
+                    case TypeCode.Int16:
+                        bytes = BitConverter.GetBytes((short)val);
+                        break;
+                    case TypeCode.UInt16:
+                        bytes = BitConverter.GetBytes((ushort)val);
+                        break;
+                    case TypeCode.Int32:
+                        bytes = BitConverter.GetBytes((int)val);
+                        break;
+                    case TypeCode.UInt32:
+                        bytes = BitConverter.GetBytes((uint)val);
+                        break;
+                    case TypeCode.Int64:
+                        bytes = BitConverter.GetBytes((long)val);
+                        break;
+                    case TypeCode.UInt64:
+                        bytes = BitConverter.GetBytes((ulong)val);
+                        break;
+                    case TypeCode.Single:
+                        bytes = BitConverter.GetBytes((float)val);
+                        break;
+                    case TypeCode.Double:
+                        bytes = BitConverter.GetBytes((double)val);
+                        break;
+                    default:
+                        throw new NotSupportedException(typeof(T).FullName + " is not currently supported by Write<T>");
+                }
+                return Memory.WriteBytes(address, bytes);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #region <Search Members>

@@ -35,10 +35,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BlackMagic">
-      <HintPath>..\..\..\BlackRain\bin\Debug\BlackMagic.dll</HintPath>
+      <HintPath>Dependencies\BlackMagic.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="fasmdll_managed">
-      <HintPath>..\..\..\BlackRain\bin\Debug\fasmdll_managed.dll</HintPath>
+      <HintPath>Dependencies\fasmdll_managed.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -43,7 +43,7 @@ namespace BlackRain.GUI
         {
             if (cmb_Processes.SelectedIndex != 0 && _processes.Count != 0)
             {
-                ObjectManager.Initialize(_processes[cmb_Processes.SelectedIndex].Id, _processes[cmb_Processes.SelectedIndex].MainModule.BaseAddress);
+                ObjectManager.Initialize(_processes[cmb_Processes.SelectedIndex]);
             }
         }
     }

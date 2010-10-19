@@ -21,7 +21,7 @@ namespace BlackRain.Common.Objects
         {
             get
             {
-                return ObjectManager.Memory.ReadASCIIString(ObjectManager.Memory.ReadUInt(ObjectManager.GlobalBaseAddress + (uint)Offsets.WoWPlayerMe.Zone), 255);
+                return ObjectManager.Memory.ReadASCIIString(ObjectManager.ReadRelative<uint>((uint)Offsets.WoWPlayerMe.Zone), 255);
             }
         }
 
@@ -32,16 +32,30 @@ namespace BlackRain.Common.Objects
         {
             get
             {
-                return ObjectManager.Memory.ReadASCIIString(ObjectManager.Memory.ReadUInt(ObjectManager.GlobalBaseAddress + (uint)Offsets.WoWPlayerMe.SubZone), 255);
+                return ObjectManager.Memory.ReadASCIIString(ObjectManager.ReadRelative<uint>((uint)Offsets.WoWPlayerMe.SubZone), 255);
             }
         }
 
         /// <summary>
-        /// Your character's money (in copper).
+        /// Your character's money.
         /// </summary>
-        public int Money
+        public int Copper
         {
             get { return GetStorageField<int>((uint)Offsets.WowPlayerFields.PLAYER_FIELD_COINAGE); }
         }
+
+        /// <summary>
+        /// Gets the silver.
+        /// </summary>
+        /// <value>The silver.</value>
+        /// 19/10/2010 17:57
+        public int Silver { get { return Copper/100; } }
+
+        /// <summary>
+        /// Gets the gold.
+        /// </summary>
+        /// <value>The gold.</value>
+        /// 19/10/2010 17:57
+        public int Gold { get { return Silver/100; } }
     }
 }

@@ -12,7 +12,7 @@ namespace BlackRain.Common
          * this file with the use of the #pragma statement below.
          */
 
-#pragma warning disable 1591
+        #pragma warning disable 1591
 
         /// <summary>
         /// Memory locations specific to the WowPlayer type.
@@ -23,6 +23,18 @@ namespace BlackRain.Common
             NameMask = 0x24,
             NameBase = 0x1C, 
             NameString = 0x20 
+        }
+
+        /// <summary>
+        /// Memory locations specific to the ObjectManager.
+        /// </summary>
+        public enum ObjectManager
+        {
+            Tls = 0x008A5C20,
+            CurMgr = 0x4618,
+            LocalGuid = 0xC8,
+            FirstObject = 0xB4,
+            NextObject = 0x3C,
         }
 
         /// <summary>
