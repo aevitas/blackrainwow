@@ -21,7 +21,7 @@ namespace BlackRain.Common.Objects
         {
             get
             {
-                return ObjectManager.Memory.ReadASCIIString(ObjectManager.ReadRelative<uint>((uint)Offsets.WoWPlayerMe.Zone), 255);
+                return ObjectManager.Memory.ReadASCIIString(ObjectManager.ReadRelative<uint>((uint)Offsets.WowPlayerMe.Zone), 255);
             }
         }
 
@@ -32,7 +32,7 @@ namespace BlackRain.Common.Objects
         {
             get
             {
-                return ObjectManager.Memory.ReadASCIIString(ObjectManager.ReadRelative<uint>((uint)Offsets.WoWPlayerMe.SubZone), 255);
+                return ObjectManager.Memory.ReadASCIIString(ObjectManager.ReadRelative<uint>((uint)Offsets.WowPlayerMe.SubZone), 255);
             }
         }
 
