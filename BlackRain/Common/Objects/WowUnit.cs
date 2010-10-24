@@ -311,5 +311,31 @@ namespace BlackRain.Common.Objects
         {
             get { return (float)Point.Distance(ObjectManager.Me.Location, Location); }
         }
+
+
+        /// <summary>
+        /// Gets the race of the unit.
+        /// </summary>
+        public Offsets.RaceFlags Race
+        {
+            get
+            {
+                uint ret = GetStorageField<uint>((int)Offsets.WowUnitFields.UNIT_FIELD_BYTES_0);
+                return (Offsets.RaceFlags)(ret & 0xFF);
+            }
+        }
+
+
+        /// <summary>
+        /// Gets the class of the unit.
+        /// </summary>
+        public Offsets.ClassFlags Class
+        {
+            get
+            {
+                uint ret = GetStorageField<uint>((int)Offsets.WowUnitFields.UNIT_FIELD_BYTES_0);
+                return (Offsets.ClassFlags)((ret >> 8) & 0xFF);
+            }
+        }
     }
 }

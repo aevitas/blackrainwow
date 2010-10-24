@@ -404,7 +404,7 @@ namespace BlackRain.Common.Objects
         /// Gets object of the specified type. 
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="allowInheritance">Indicates whether to also get objects that derives from the specified type (ie. WoWPlayer derives from WoWUnit, so specifying WoWUnit and true would also return all players).</param>
+        /// <param name="allowInheritance">Indicates whether to also get objects that derives from the specified type (ie. WowPlayer derives from WoWUnit, so specifying WoWUnit and true would also return all players).</param>
         /// <param name="includeMeIfFound">Indicates whether to include the local player.</param>
         /// <returns></returns>
         public static List<T> GetObjectsOfType<T>(bool allowInheritance, bool includeMeIfFound) where T : WowObject

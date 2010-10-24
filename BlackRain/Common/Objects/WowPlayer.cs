@@ -71,8 +71,8 @@ namespace BlackRain.Common.Objects
         {
             get
             {
-                uint nMask = ObjectManager.ReadRelative<uint>((uint)Offsets.WoWPlayer.NameStore + (uint)Offsets.WoWPlayer.NameMask);
-                uint nBase = ObjectManager.ReadRelative<uint>((uint)Offsets.WoWPlayer.NameStore + (uint)Offsets.WoWPlayer.NameBase);
+                uint nMask = ObjectManager.ReadRelative<uint>((uint)Offsets.WowPlayer.NameStore + (uint)Offsets.WowPlayer.NameMask);
+                uint nBase = ObjectManager.ReadRelative<uint>((uint)Offsets.WowPlayer.NameStore + (uint)Offsets.WowPlayer.NameBase);
 
                 ulong nShortGUID = this.GUID & 0xFFFFFFFF; // only need part of the GUID
                 ulong nOffset = 0xC * (nMask & nShortGUID);
@@ -95,7 +95,7 @@ namespace BlackRain.Common.Objects
                     nTestAgainstGUID = ObjectManager.Memory.ReadUInt((uint)(nCurrentObject));
                 }
 
-                return ObjectManager.Memory.ReadASCIIString((uint)(nCurrentObject + (uint)Offsets.WoWPlayer.NameString), 40);
+                return ObjectManager.Memory.ReadASCIIString((uint)(nCurrentObject + (uint)Offsets.WowPlayer.NameString), 40);
             }
         }
 

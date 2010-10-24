@@ -17,7 +17,7 @@ namespace BlackRain.Common
         /// <summary>
         /// Memory locations specific to the WowPlayer type.
         /// </summary>
-        public enum WoWPlayer: uint
+        public enum WowPlayer: uint
         {
             NameStore = 0x00881988 + 0x8,
             NameMask = 0x24,
@@ -40,7 +40,7 @@ namespace BlackRain.Common
         /// <summary>
         /// Memory locations specific to the WowPlayerMe type.
         /// </summary>
-        public enum WoWPlayerMe: uint
+        public enum WowPlayerMe: uint
         {
             Zone = 0x981688,
             SubZone = 0x981684
@@ -70,6 +70,42 @@ namespace BlackRain.Common
         }
 
         #region <Flags>
+
+        [Flags]
+        public enum ClassFlags : uint
+        {
+            None = 0,
+            Warrior = 1,
+            Paladin = 2,
+            Hunter = 3,
+            Rogue = 4,
+            Priest = 5,
+            DeathKnight = 6,
+            Shaman = 7,
+            Mage = 8,
+            Warlock = 9,
+            Druid = 11,
+        }
+
+        [Flags]
+        public enum RaceFlags : uint
+        {
+            Human = 1,
+            Orc,
+            Dwarf,
+            NightElf,
+            Undead,
+            Tauren,
+            Gnome,
+            Troll,
+            Goblin,
+            BloodElf,
+            Draenei,
+            FelOrc,
+            Naga,
+            Broken,
+            Skeleton = 15,
+        }
 
         [Flags]
         public enum CorpseFlags
