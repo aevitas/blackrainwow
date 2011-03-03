@@ -29,13 +29,5 @@
         {
             get { return GetStorageField<int>((uint) Offsets.WowCorpseFields.CORPSE_FIELD_DISPLAY_ID); }
         }
-
-        /// <summary>
-        /// The Corpses guild.
-        /// </summary>
-        public int Guild
-        {
-            get { return GetStorageField<int>((uint) Offsets.WowCorpseFields.CORPSE_FIELD_GUILD); }
-        }
     }
 }
