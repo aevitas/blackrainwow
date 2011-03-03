@@ -35,11 +35,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BlackMagic">
-      <HintPath>Dependencies\BlackMagic.dll</HintPath>
+      <HintPath>D:\Projects\Salty\Salty\bin\Debug\BlackMagic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="fasmdll_managed">
-      <HintPath>Dependencies\fasmdll_managed.dll</HintPath>
+      <HintPath>D:\Projects\Salty\Salty\bin\Debug\fasmdll_managed.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />

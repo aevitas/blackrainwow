@@ -81,7 +81,7 @@
         /// </summary>
         public virtual float Facing
         {
-            get { return ObjectManager.Memory.ReadFloat(BaseAddress + (uint)Offsets.WowObject.Facing); }
+            get { return ObjectManager.Memory.ReadFloat(BaseAddress + (uint)Offsets.WowObject.Rotation); }
         }
 
         /// <summary>
